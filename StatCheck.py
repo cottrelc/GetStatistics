@@ -12,21 +12,35 @@ console = Console()
 # TODO: Print creative program title
 console.print(
     Panel.fit(
-    "State Check",
+    "     State Calculator      ",
     style="bold red",
     subtitle="By Carson Cottrell"
     )
 )
 
+#TODO: Give choice to plus or minus number
 
+number = float(input("Enter number here: "))
+while True:
+    y = input("What would you like to do (+ or -): ")
 
-ATK = float(input("Enter Damage: "))
-DEF = float(input("Enter Defence: "))
-SPE = float(input("Enter Speed: "))
+    if y == "+":
+        add = float(input("Enter number: "))
+        number += add
+    elif y == "-":
+        minus = float(input("Enter number: "))
+        number -= minus
+    else:
+        print("Please put in a sign.")
+    t = input("Would you like to add or subtract more (y/n): ")
+    if t == "n":
+        break
+    elif t == "y":
+        continue
+    else:
+        print("Please Enter y or n")
 
-print(f"Your Attack is {ATK}")
-print(f"Your Defense is {DEF}")
-print(f"Your Speed is {SPE}")
+print(f"Answer: {number}")
 
 
 
