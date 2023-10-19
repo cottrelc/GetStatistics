@@ -22,7 +22,7 @@ console.print(
 
 number = float(input("Enter number here: "))
 while True:
-    y = input("What would you like to do (+ or -): ")
+    y = input("What would you like to do (+ or - or * or / or square): ")
 
     if y == "+":
         add = float(input("Enter number: "))
@@ -30,9 +30,21 @@ while True:
     elif y == "-":
         minus = float(input("Enter number: "))
         number -= minus
+
+    elif y == "*":
+        multiply = float(input("Enter number: "))
+        number *= multiply
+    elif y == "/":
+        divide = float(input("Enter number: "))
+        number /= divide
+    elif y == "square":
+        square = int(input("How many times would you like to times it by itself: "))
+        answer = number
+        for i in range(square - 1):
+            number= answer * number
     else:
         print("Please put in a sign.")
-    t = input("Would you like to add or subtract more (y/n): ")
+    t = input("Would you like to do more math more (y/n): ")
     if t == "n":
         break
     elif t == "y":
