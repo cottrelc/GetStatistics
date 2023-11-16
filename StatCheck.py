@@ -27,25 +27,25 @@ while True:
     if y == "+":
         add = float(input("Enter number: "))
         number += add
-        print(f"Result: {number}")
+        console.print(f"[bold red]Result[/bold red]: {number}")
     elif y == "-":
         minus = float(input("Enter number: "))
         number -= minus
-        print(f"Result: {number}")
+        console.print(f"[bold red]Result[/bold red]: {number}")
     elif y == "*":
         multiply = float(input("Enter number: "))
         number *= multiply
-        print(f"Result: {number}")
+        console.print(f"[bold red]Result[/bold red]: {number}")
     elif y == "/":
         divide = float(input("Enter number: "))
         number /= divide
-        print(f"Result: {number}")
+        console.print(f"[bold red]Result[/bold red]: {number}")
     elif y == "square":
         square = int(input("How many times would you like to times it by itself: "))
         answer = number
         for i in range(square - 1):
             number= answer * number
-        print(f"Result: {number}")
+        console.print(f"[bold red]Result[/bold red]: {number}")
     else:
         print("Please put in a sign.")
     t = input("Would you like to do more math more (y/n): ")
@@ -56,8 +56,8 @@ while True:
     else:
         print("Please Enter y or n")
 
-print(f"Answer: {number}")
-
+console.print(f"[bold green]Answer[/bold green]: {number}")
+#More info
 
 
     
