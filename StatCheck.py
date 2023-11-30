@@ -22,7 +22,7 @@ console.print(
 import math
 number = float(input("Enter number here: "))
 while True:
-    y = input("What would you like to do (+ or - or * or / or square): ")
+    y = input("What would you like to do (+ or - or * or / or square or root): ")
 
     if y == "+":
         add = float(input("Enter number: "))
@@ -45,6 +45,9 @@ while True:
         answer = number
         for i in range(square - 1):
             number= answer * number
+        console.print(f"[bold red]Result[/bold red]: {number}")
+    elif y =="root":
+        number = math.sqrt(number)
         console.print(f"[bold red]Result[/bold red]: {number}")
     else:
         print("Please put in a sign.")
