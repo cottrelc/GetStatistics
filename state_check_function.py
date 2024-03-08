@@ -8,6 +8,10 @@
 from rich.console import Console
 from rich.panel import Panel
 
+import pyttsx3
+import math
+
+
 console = Console()
 # TODO: Print creative program title
 console.print(
@@ -19,24 +23,85 @@ console.print(
 )
 
 #TODO: Give choice to plus or minus number
-import math
+
+
+    #More info
+# this right here is the class with all the information for the calculations
+class calculate():
+
+    def __init__(self):
+        # The init holds the ability for the computer to speak to you
+        self.engine = pyttsx3.init()       
+
+    def add(self, number):
+        add = float(input("Enter number: "))
+        number += add
+        console.print(f"[bold red]Result[/bold red]: {number}")
+        # Right here I have the system say what the number you got was.
+        self.engine.say(number)
+        self.engine.runAndWait()
+        return number
+
+    def sub(self, number):
+        minus = float(input("Enter number: "))
+        number -= minus
+        console.print(f"[bold red]Result[/bold red]: {number}")
+        self.engine.say(number)
+        self.engine.runAndWait()
+        return number
+
+    def times(self, number):
+        multiply = float(input("Enter number: "))
+        number *= multiply
+        console.print(f"[bold red]Result[/bold red]: {number}")
+        self.engine.say(number)
+        self.engine.runAndWait()
+        return number
+
+    def divide(self, number):
+        divide = float(input("Enter number: "))
+        number /= divide
+        console.print(f"[bold red]Result[/bold red]: {number}")
+        self.engine.say(number)
+        self.engine.runAndWait()
+        return number
+
+    def square(self, number):
+        square = int(input("How many times would you like to times it by itself: "))
+        answer = number
+        for i in range(square - 1):
+            number= answer * number
+        console.print(f"[bold red]Result[/bold red]: {number}")
+        self.engine.say(number)
+        self.engine.runAndWait()
+        return number
+
+    def root(self, number):
+        number = math.sqrt(number)
+        console.print(f"[bold red]Result[/bold red]: {number}")
+        self.engine.say(number)
+        self.engine.runAndWait()
+        return number
+
 def main():
+    cal = calculate()
+        
     number = float(input("Enter number here: "))
     while True:
         y = input("What would you like to do (+ or - or * or / or square or root): ")
 
         if y == "+":
-            number = add(number)
+            number = cal.add(number)
         elif y == "-":
-            number = sub(number)
+            number = cal.sub(number)
         elif y == "*":
-            number = times(number)
+                number = cal.times(number)
         elif y == "/":
-            number = divide(number)
+                number = cal.divide(number)
         elif y == "square":
-            number = square(number)
+            number = cal.square(number)
         elif y =="root":
-            number = root(number)
+                number = cal.root(number)
         else:
             print("Please put in a sign.")
         t = input("Would you like to do more math more (y/n): ")
@@ -46,47 +111,6 @@ def main():
             continue
         else:
             print("Please Enter y or n")
-
-    console.print(f"[bold green]Answer[/bold green]: {number}")
-#More info
-    
-
-def add(number):
-    add = float(input("Enter number: "))
-    number += add
-    console.print(f"[bold red]Result[/bold red]: {number}")
-    return number
-
-def sub(number):
-    minus = float(input("Enter number: "))
-    number -= minus
-    console.print(f"[bold red]Result[/bold red]: {number}")
-    return number
-
-def times(number):
-    multiply = float(input("Enter number: "))
-    number *= multiply
-    console.print(f"[bold red]Result[/bold red]: {number}")
-    return number
-
-def divide(number):
-    divide = float(input("Enter number: "))
-    number /= divide
-    console.print(f"[bold red]Result[/bold red]: {number}")
-    return number
-
-def square(number):
-    square = int(input("How many times would you like to times it by itself: "))
-    answer = number
-    for i in range(square - 1):
-        number= answer * number
-    console.print(f"[bold red]Result[/bold red]: {number}")
-    return number
-
-def root(number):
-    number = math.sqrt(number)
-    console.print(f"[bold red]Result[/bold red]: {number}")
-    return number
     
     
 main()
