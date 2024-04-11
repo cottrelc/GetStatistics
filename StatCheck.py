@@ -35,37 +35,41 @@ class math:
         self.engine = pyttsx3.init()
 
     def main(self):
-        number = float(input("Enter number here: "))
+        print("Say a number here: ")
+        self.user_input()
+
+        self.number()
+
         while True:
             print("What would you like to do (plus or minus or times or divide or square or root): ")
 
             self.user_input()
 
-            if self.query == "plus":
+            if self.query == "Plus":
                 add = float(input("Enter number: "))
-                number += add
-                console.print(f"[bold red]Result[/bold red]: {number}")
-            elif self.query == "minus":
+                self.numb += add
+                console.print(f"[bold red]Result[/bold red]: {self.numb}")
+            elif self.query == "Minus":
                 minus = float(input("Enter number: "))
-                number -= minus
-                console.print(f"[bold red]Result[/bold red]: {number}")
-            elif self.query == "times":
+                self.numb -= minus
+                console.print(f"[bold red]Result[/bold red]: {self.numb}")
+            elif self.query == "Times":
                 multiply = float(input("Enter number: "))
-                number *= multiply
-                console.print(f"[bold red]Result[/bold red]: {number}")
-            elif self.query == "divide":
+                self.numb *= multiply
+                console.print(f"[bold red]Result[/bold red]: {self.numb}")
+            elif self.query == "Divide":
                 divide = float(input("Enter number: "))
-                number /= divide
-                console.print(f"[bold red]Result[/bold red]: {number}")
-            elif self.query == "square":
+                self.numb /= divide
+                console.print(f"[bold red]Result[/bold red]: {self.numb}")
+            elif self.query == "Square":
                 square = int(input("How many times would you like to times it by itself: "))
-                answer = number
+                answer = self.numb
                 for i in range(square - 1):
-                    number= answer * number
-                console.print(f"[bold red]Result[/bold red]: {number}")
-            elif self.query =="root":
-                number = math.sqrt(number)
-                console.print(f"[bold red]Result[/bold red]: {number}")
+                    self.numb= answer * number
+                console.print(f"[bold red]Result[/bold red]: {self.numb}")
+            elif self.query =="Root":
+                self.numb = math.sqrt(self.numb)
+                console.print(f"[bold red]Result[/bold red]: {self.numb}")
             else:
                 print("Please put in a sign.")
             t = input("Would you like to do more math more (y/n): ")
@@ -76,7 +80,7 @@ class math:
             else:
                 print("Please Enter y or n")
 
-        console.print(f"[bold green]Answer[/bold green]: {number}")
+        console.print(f"[bold green]Answer[/bold green]: {self.numb}")
 
     def user_input(self):
 
@@ -101,9 +105,34 @@ class math:
                 self.engine.runAndWait()
             except sr.UnknownValueError:
                 print("Google Speech Recognition could not understand audio")
+                self.user_input()
 
             except sr.RequestError as e:
                 print(f"Google Speech did not respond: {e}")
+
+
+    def number(self):
+
+        if self.query == "one":
+            self.numb = 1
+        elif self.query == "two":
+            self.numb = 2
+        elif self.query == "three":
+            self.numb = 3
+        elif self.query == "four":
+            self.numb = 4
+        elif self.query == "five":
+            self.numb = 5
+        elif self.query == "six":
+            self.numb = 6
+        elif self.query == "seven":
+            self.numb = 7
+        elif self.query == "eight":
+            self.numb = 8
+        elif self.query == "nine":
+            self.numb = 9
+        else:
+            int: self.numb = self.query
 #More info
     
 
