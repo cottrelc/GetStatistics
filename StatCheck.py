@@ -39,37 +39,54 @@ class math:
         self.user_input()
 
         self.number()
-
+        
         while True:
             print("What would you like to do (plus or minus or times or divide or square or root): ")
-
+            self.org = self.numb
             self.user_input()
 
-            if self.query == "Plus":
-                add = float(input("Enter number: "))
-                self.numb += add
-                console.print(f"[bold red]Result[/bold red]: {self.numb}")
-            elif self.query == "Minus":
-                minus = float(input("Enter number: "))
-                self.numb -= minus
-                console.print(f"[bold red]Result[/bold red]: {self.numb}")
-            elif self.query == "Times":
-                multiply = float(input("Enter number: "))
-                self.numb *= multiply
-                console.print(f"[bold red]Result[/bold red]: {self.numb}")
-            elif self.query == "Divide":
-                divide = float(input("Enter number: "))
-                self.numb /= divide
-                console.print(f"[bold red]Result[/bold red]: {self.numb}")
-            elif self.query == "Square":
-                square = int(input("How many times would you like to times it by itself: "))
-                answer = self.numb
+            if self.query == "Plus" or self.query == "plus":
+                print("Say a number here: ")
+                self.user_input()
+
+                self.number()
+                self.org += self.numb
+                console.print(f"[bold red]Result[/bold red]: {self.org}")
+            elif self.query == "Minus" or self.query == "minus":
+                print("Say a number here: ")
+                self.user_input()
+
+                self.number()
+                self.org -= self.numb
+                console.print(f"[bold red]Result[/bold red]: {self.org}")
+            elif self.query == "Times" or self.query == "times":
+                print("Say a number here: ")
+                self.user_input()
+
+                self.number()
+                self.org *= self.numb
+                console.print(f"[bold red]Result[/bold red]: {self.org}")
+            elif self.query == "Divide" or self.query == "divide":
+                print("Say a number here: ")
+                self.user_input()
+
+                self.number()
+                self.org /= self.numb
+                console.print(f"[bold red]Result[/bold red]: {self.org}")
+            elif self.query == "Square" or self.query == "square":
+                print("Say a number here: ")
+                self.user_input()
+
+                self.number()
+                print("How many times would you like to times it by itself: ")
+                square = self.numb
+                answer = self.org
                 for i in range(square - 1):
-                    self.numb= answer * number
-                console.print(f"[bold red]Result[/bold red]: {self.numb}")
-            elif self.query =="Root":
-                self.numb = math.sqrt(self.numb)
-                console.print(f"[bold red]Result[/bold red]: {self.numb}")
+                    self.org= answer * self.org
+                console.print(f"[bold red]Result[/bold red]: {self.org}")
+            elif self.query =="Root" or self.query == "root---------":
+                self.org = math.sqrt(self.org)
+                console.print(f"[bold red]Result[/bold red]: {self.org}")
             else:
                 print("Please put in a sign.")
             t = input("Would you like to do more math more (y/n): ")
@@ -80,7 +97,7 @@ class math:
             else:
                 print("Please Enter y or n")
 
-        console.print(f"[bold green]Answer[/bold green]: {self.numb}")
+        console.print(f"[bold green]Answer[/bold green]: {self.org}")
 
     def user_input(self):
 
@@ -93,13 +110,13 @@ class math:
             try:
                 print('Recognizing . . .')
 
-                recognized_words = self.r.recognize_google(
+                self.recognized_words = self.r.recognize_google(
                     audio,
                     language='en-US',
                     show_all=True
                 )
 
-                self.query = recognized_words['alternative'][0]['transcript']
+                self.query = self.recognized_words['alternative'][0]['transcript']
                 print(self.query)
                 self.engine.say(self.query)
                 self.engine.runAndWait()
@@ -132,7 +149,11 @@ class math:
         elif self.query == "nine":
             self.numb = 9
         else:
-            int: self.numb = self.query
+            try:
+                float(self.query)
+                self.numb = self.query
+            except ValueError:
+                print("wrong value")
 #More info
     
 
